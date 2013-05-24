@@ -1,0 +1,226 @@
+''
+''
+''  EliteResource Descriptor (ERD) file
+''
+''
+''  About ERD files:
+''
+''
+''  EliteResource Compiler (ERC) is used to parse ERD files and produce binary resource files which are
+''  then loaded and used by EliteGameEngine.
+''
+''  ERD files can be used to describe any supported resource type. And those currently are:
+''
+''    * BitmapFont resources - for building EBF files (fonts used in EliteGameEngine)
+''    * UITheme resources - for "themming" EliteUI elements (EUI files)
+''    * BitmapPack resources - for making image packs (EBP files)
+''    * AnimatedBitmap resources - for building EAB files (animations used in EliteGameEngine)
+''    * Movie resources - for making EMV files (advanced animations with or without bundled audio)
+''
+''  Each ERD file (for all types of resources) starts with Describe keyword, with Describe statement we say to
+''  ERC which type of resource we're describing and it will load specified parser which will translate our
+''  resource descriptor file into binary resource file.
+''
+''  Definitions in ERD file are contained in "sections", which begin with Section "<NameOfSection>" and ends with
+''  End Section statement.
+''
+''  As you may noticed, you use '' symbol for line comments, but note: it's two chars '' and not just '
+''
+''  -------------------------------------
+''
+''  Now about BitmapFont descriptor file:
+''
+''  To make fonts to be used with EGE you have to draw them first in some graphics editor,
+''  Photoshop for example, and save it in PNG format (this is important, as thats the only format supported)
+''  Then you have to write a font descriptor file which describes the PNG image you've made.
+''
+''  With font descriptor file you define which characters can be represented with this font, and you define
+''  some information about font and each character.
+''
+''  For BitmapFont resource we use Describe BitmapFont statement.
+''
+''  For BitmapFont resources currently there are Font, Characters and Kerning sections.
+''
+
+Describe BitmapFont
+
+
+'' Now follows Font section for our sample font
+Section "Font"
+
+  '' set PNG file to use
+  Bitmap = sample.png
+
+  '' set this to 1 if you use non-ascii characters (this is YET UNSUPORTED FEATURE)
+  WChar = 0
+
+  '' height of each line of text
+  LineHeight = 35
+
+  '' line spacing property sets default spacing (in pixels) between two lines of text, this can be changed when font is rendered
+  LineSpacing = 5
+
+  '' sets how much pixels are between two characters
+  LetterSpacing = 0
+
+  '' padding top sets text padding from the top (also can be changed when font is rendered)
+  PaddingTop = 0
+
+  '' left padding:
+  PaddingLeft = 0
+
+  '' right padding:
+  PaddingRight = 0
+
+  '' bottom padding:
+  PaddingBottom = 0
+
+  '' defines width of space character (in pixels):
+  SpaceWidth = 18
+
+  '' defines width of tab character (in pixels per character):
+  TabWidth = 22
+
+  '' defines tab size (in characters):
+  TabSize = 8
+
+End Section
+
+
+'' now we define characters in Characters section
+
+Section "Characters"
+
+  '' to define char we use following syntax (brackets means that parametar is not required):
+  ''
+  ''  Char Character X Y W H [OffsetX] [OffsetY]
+  ''
+  ''  Char is a keyword and is required
+  ''  Character can be any character like A or 0 or !
+  ''  X Y W and H parameters define rectangle on the image that belongs to this character
+  ''  OffsetX and OffsetY params (both are optional and defaults to 0) define offset that is used when character is printed
+  ''
+  ''  example:
+  ''
+  ''  Char A 0 0 20 34   '' this defines capital A character and sets it's rect's coords to 0,0 and size to 20x34
+  ''
+  ''
+  ''  Another way of defining character is with CharCode keyword, where instead of character it's numeric value is used:
+  ''
+  ''  CharCode 65 0 0 20 34  '' this is identical to previous example
+  ''
+  ''
+
+  Char   A     2     1   22   27   0    3
+  Char   B    30     1   21   27   0    3
+  Char   C    55     1   28   28   0    3
+  Char   D    88     1   26   27   0    3
+  Char   E   119     1   18   27   0    3
+  Char   F   142     1   20   27   0    3
+  Char   G   165     1   25   28   0    3
+  Char   H   194     1   21   27   0    3
+  Char   I   222     1   11   27   0    3
+  Char   J   238     1   13   28   0    3
+  Char   K   257     1   24   27   0    3
+  Char   L   285     1   15   27   0    3
+  Char   M   303     1   29   27   0    3
+  Char   N   339     1   21   27   0    3
+  Char   O   364     1   28   28   0    3
+  Char   P   398     1   21   27   0    3
+  Char   Q   423     1   28   29   0    3
+  Char   R   456     1   22   27   0    3
+  Char   S   482     1   16   28   0    3
+  Char   T   502     1   22   27   0    3
+  Char   U   527     1   22   28   0    3
+  Char   V   552     1   24   28   0    3
+  Char   W   579     1   29   28   0    3
+  Char   X   611     1   23   27   0    3
+  Char   Y   634     1   24   27   0    3
+  Char   Z   660     1   22   27   0    3
+  Char   a     2    37   22   22   0    9
+  Char   b    29    31   22   28   0    3
+  Char   c    55    37   21   22   0    9
+  Char   d    81    32   22   27   0    4
+  Char   e   108    37   22   22   0    9
+  Char   f   133    32   14   26   0    4
+  Char   g   152    38   21   28   0   10
+  Char   h   178    32   20   26   0    4
+  Char   i   203    31   11   27   0    3
+  Char   j   217    30   17   36   0    2
+  Char   k   239    31   22   27   0    3
+  Char   l   264    31   11   27   0    3
+  Char   m   281    37   27   21   0    9
+  Char   n   314    37   20   21   0    9
+  Char   o   337    37   23   22   0   10
+  Char   p   365    37   22   28   0    9
+  Char   q   390    38   23   27   0   10
+  Char   r   417    37   14   21   0    9
+  Char   s   434    37   17   22   0    9
+  Char   t   454    32   14   27   0    4
+  Char   u   473    37   20   22   0    9
+  Char   v   496    37   19   22   0    9
+  Char   w   518    37   28   22   0    9
+  Char   x   551    37   20   21   0    9
+  Char   y   576    37   20   29   0    9
+  Char   z   600    38   21   20   0   10
+  Char   0     2    69   21   28   0    3
+  Char   1    33    69   11   27   0    3
+  Char   2    55    69   20   27   0    3
+  Char   3    82    69   17   28   0    3
+  Char   4   107    69   20   27   0    3
+  Char   5   135    69   18   28   0    3
+  Char   6   159    69   22   28   0    3
+  Char   7   186    69   19   27   0    3
+  Char   8   211    69   21   28   0    3
+  Char   9   237    69   21   29   0    3
+  Char   (   264    69   13   32   0   -1
+  Char   )   283    69   13   32   0   -1
+  Char   [   302    69   14   32   0   -1
+  Char   ]   321    69   14   32   0   -1
+  Char   {   340    69   15   32   0   -1
+  Char   }   360    69   15   32   0   -1
+  Char   <   379    70   19   26   0    2
+  Char   >   403    70   19   26   0    2
+  Char   /   426    70   14   31   0    1
+  Char   \   445    70   14   31   0    1
+  Char   |   468    70   11   32   0   -1
+  Char   .   488    85   13   12   0   18
+  Char   ,   508    85   13   13   0   18
+  Char   :   528    76   13   21   0    4
+  Char   ;   547    76   12   22   0    4
+  Char   '   567    70   13   12   0    0
+  Char   "   586    70   22   12   0    0
+  Char   `     5   106   11    8   0    2
+  Char   ~    28   103   21   11   0    0
+  Char   !    57   105   13   28   0    2
+  Char   @    77   105   28   28   0    1
+  Char   #   110   105   23   27   0    1
+  Char   $   141   103   17   32   0   -1
+  Char   %   166   105   32   28   0    1
+  Char   ^   202   106   21   15   0    1
+  Char   &   230   105   22   28   0    2
+  Char   *   261   106   16   14   0    2
+  Char   _   282   130   21    8   0   22
+  Char   +   310   108   22   22   0    4
+  Char   -   339   116   12    9   0   10
+  Char   =   357   112   22   14   0    8
+  Char   ?   386   105   20   28   0    1
+
+ End Section
+
+''
+'' Kerning section is optional (other two are required) and it's not used in this sample font.
+''
+'' in this section you define kerning pairs and the kerning value, to define character you use
+'' either Char <character> or CharCode <code> notation and to define kerning value you use
+'' KernBy keyword followed by numeric value
+''
+'' this is sample Kerning section:
+''
+'' Section "Kerning"
+''
+''   Char A  Char )  KernBy  -2    ''  this will move ) character 2 pixels to the left if it's right after A character
+''
+'' End Section
+''
+''

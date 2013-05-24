@@ -1,0 +1,38 @@
+[Project]
+Version=2
+Description=EliteResource Compiler
+Api=fb (FreeBASIC)
+Grouping=1
+AddMainFiles=1
+AddModuleFiles=1
+ResExport=
+CompileIfNewer=0
+[Make]
+Module=Module Build,fbc -c
+Recompile=2
+Current=2
+1=Windows Console (debug),fbc -g -s console
+2=Windows Console,fbc -s console
+Output=
+Run=D:\games\EliteTanks\EliteGameEngine\test\fonts\sample.erd
+[File]
+1=main.bas
+2=bitmapfont.bas
+3=functions.bas
+4=types.bas
+5=mixed.bi
+6=dynarray.bi
+7=
+[FileInfo]
+1=0,285,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+5=0,105,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+6=0,346,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+4=0,5,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+3=0,75,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+2=0,356,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+7=0,48,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+[BreakPoint]
+1=
+2=
+3=
+4=
