@@ -1,0 +1,7 @@
+This is one of my old projects I've recently found.
+It supposed to be a game framework (not a game engine, despite it's name) but it was never finished.
+I've decided to put it online somewhere just in case someone needs it...
+
+EGE is written in FreeBASIC and tested on Windows only. I do not remember compiler version which was
+used to compile the code and since I've stopped following FreeBASIC project few years back I do not
+know if recent compiler would be able to compile it.
